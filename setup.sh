@@ -136,16 +136,16 @@ case "$PART_PROF" in
         parted -s ${DISK} mkpart primary ext4 513MiB 100%
 
         echo "---------------Formatting partitions---------------"
-        echo "Boot-Partition: FAT32 on ${DISK}p1"
-        mkfs.fat -F 32 "${DISK}p1"
-        echo "Root-Partition: ext4 on ${DISK}p2"
-        mkfs.ext4 "${DISK}p2"
+        echo "Boot-Partition: FAT32 on ${DISK}1"
+        mkfs.fat -F 32 "${DISK}1"
+        echo "Root-Partition: ext4 on ${DISK}2"
+        mkfs.ext4 "${DISK}2"
 
         echo "---------------Mounting partitions---------------"
         echo "Mounting root partition to /mnt"
-        mount ${DISK}p2 /mnt
+        mount ${DISK}2 /mnt
         echo "Mounting boot partition to /mnt/boot"
-        mount --mkdir ${DISK}p1 /mnt/boot
+        mount --mkdir ${DISK}1 /mnt/boot
         ;;
     *)
         echo "exit"
