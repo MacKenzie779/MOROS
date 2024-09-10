@@ -34,9 +34,9 @@ echo "------------------Partitioning-------------------"
 echo "-------------------------------------------------"
 lsblk
 fdisk -l
-echo "Please enter disk: (example /dev/sda)"
+echo -e "\nPlease enter disk: (example /dev/sda)"
 read DISK
-echo "Choose partition table profile"
+echo -e "\nChoose partition table profile"
 echo "1 -> Laptop dualboot"
 echo "2 -> Desktop"
 echo "3 -> VM"
