@@ -190,6 +190,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "Chroot into new system"
 # copy script into the system available after chrooting
 cp setup-chroot.sh /mnt/setup-chroot.sh
+chmod +x /mnt/setup-chroot.sh
+# the ./setup-chroot is referencing /mnt/setup-chroot.sh
 arch-chroot /mnt /bin/bash -c "./setup-chroot.sh"
 
 
@@ -197,5 +199,5 @@ arch-chroot /mnt /bin/bash -c "./setup-chroot.sh"
 #echo "-------------------------------------------------"
 #echo "-----------------REBOOTING NOW!------------------"
 #echo "-------------------------------------------------"
-#umount -R /mnt
-#reboot
+umount -R /mnt
+reboot
