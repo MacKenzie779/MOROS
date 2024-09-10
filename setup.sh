@@ -36,7 +36,7 @@ lsblk
 fdisk -l
 echo -e "\nPlease enter disk: (example /dev/sda)"
 read DISK
-echo -e "\nChoose partition table profile"
+echo -e "\nChoose your partition scheme (for more information see README.md):"
 echo "1 -> Laptop dualboot"
 echo "2 -> Desktop"
 echo "3 -> VM"
@@ -44,7 +44,7 @@ echo "4 -> exit (default)"
 read PART_PROF
 case "$PART_PROF" in 
     "1")
-        echo "You selected: Laptop dualboot partition table"
+        echo "You selected: Laptop dualboot partition scheme"
         echo "${DISK} will be wiped and following partition table will be applied"
         echo "+-------------+------------------------+------------+"
         echo "| Mount point | Size                   | Filesystem |"
@@ -103,21 +103,21 @@ case "$PART_PROF" in
         swapon ${DISK}p2
         ;;
     "2")
-        echo "You selected: Desktop partition table"
+        echo "You selected: Desktop partition scheme"
         echo "Error: not implemented"
         echo "abort installation ..."
         exit 1
         ;;
     "3") 
-        echo "You selected: VM partition table"
+        echo "You selected: VM partition scheme"
         echo "${DISK} will be wiped and following partition table will be applied"
-        echo "+-------------+----------------------+------------+"
-        echo "| Mount point | Size                 | Filesystem |"
-        echo "+-------------+----------------------+------------+"
-        echo "| /boot       | 512 MiB              | FAT32      |"
-        echo "+-------------+----------------------+------------+"
-        echo "| /           | 100% free disk space | EXT4       |"
-        echo "+-------------+----------------------+------------+"
+        echo "+-------------+-------------------------+------------+"
+        echo "| Mount point | Size                    | Filesystem |"
+        echo "+-------------+-------------------------+------------+"
+        echo "| /boot       | 512 MiB                 | FAT32      |"
+        echo "+-------------+-------------------------+------------+"
+        echo "| /           | 100% of free disk space | EXT4       |"
+        echo "+-------------+-------------------------+------------+"
     
         echo -e "\nContinue? y/n"
         read OK
