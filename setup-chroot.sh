@@ -48,7 +48,7 @@ useradd -m -G wheel -s /bin/bash user
 
 echo "Set user passwd"
 echo "user" | passwd --stdin user
-cat "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
+echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 
 # Install Bootloader
