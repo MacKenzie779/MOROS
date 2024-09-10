@@ -26,7 +26,7 @@ echo "KEYMAP=de-latin1" >> /etc/vconsole.conf
 
 echo "Network configuration"
 echo "arch" >> /etc/hostname
-pacman -Sy networkmanager --noconfirm --needed
+pacman -S networkmanager --noconfirm --needed
 systemctl enable NetworkManager
 
 echo "Generating initramfs"
