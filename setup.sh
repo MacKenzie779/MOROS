@@ -167,12 +167,15 @@ case "$KERNEL" in
     "1") 
         echo "Installing rolling release kernel"
         pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
+        ;;
     "2")
         echo "Installing lts kernel"
         pacstrap -K /mnt base linux-lts linux-firmware --noconfirm --needed
+        ;;
     *)
         echo "Installing rolling release kernel"
         pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
+        ;;
 esac
 
 
