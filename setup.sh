@@ -166,15 +166,15 @@ read KERNEL
 case "$KERNEL" in
     "1") 
         echo "Installing rolling release kernel"
-        pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
+        pacstrap -K /mnt base linux linux-firmware git vim nano htop --noconfirm --needed
         ;;
     "2")
         echo "Installing lts kernel"
-        pacstrap -K /mnt base linux-lts linux-firmware --noconfirm --needed
+        pacstrap -K /mnt base linux-lts linux-firmware git vim nano htop --noconfirm --needed
         ;;
     *)
         echo "Installing rolling release kernel"
-        pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
+        pacstrap -K /mnt base linux linux-firmware git vim nano htop --noconfirm --needed
         ;;
 esac
 
