@@ -42,13 +42,13 @@ echo "-------------------------------------------------"
 paru -S sddm qt5‑graphicaleffects qt5‑quickcontrols2 qt5‑svg --noconfirm --needed
 sudo systemctl enable sddm
 cd /usr/share/sddm/themes
-git clone https://github.com/MacKenzie779/sddm-sugar-candy
+sudo git clone https://github.com/MacKenzie779/sddm-sugar-candy
 cd /etc
-mkdir sddm.conf.d
+sudo mkdir sddm.conf.d
 cd sddm.conf.d
-git clone https://github.com/MacKenzie779/sddmconf
+sudo git clone https://github.com/MacKenzie779/sddmconf
 cd sddmconf
-mv sddm.conf ..
+sudo mv sddm.conf ..
 
 
 # Install and configure sway
