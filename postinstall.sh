@@ -15,20 +15,20 @@ echo -e "\n=================================\n"
 echo "-------------------------------------------------"
 echo "--------------creating directories---------------"
 echo "-------------------------------------------------"
-mkdir /home/user/Desktop
-mkdir /home/user/Documents
-mkdir /home/user/Downloads
-mkdir /home/user/Music
-mkdir /home/user/Pictures
-mkdir /home/user/Videos
-mkdir .bin
+mkdir ~/Desktop
+mkdir ~/Documents
+mkdir ~/Downloads
+mkdir ~/Music
+mkdir ~/Pictures
+mkdir ~/Videos
+mkdir ~/.bin
 
 
 # Building paru
 echo "-------------------------------------------------"
 echo "------------------building paru------------------"
 echo "-------------------------------------------------"
-cd .bin
+cd ~/.bin
 sudo pacman -S base-devel --noconfirm --needed
 git clone https://aur.archlinux.org/paru.git
 cd paru
@@ -58,10 +58,10 @@ echo "-------------------------------------------------"
 paru -S sway nordic-theme i3status nerd-fonts-jetbrains-mono ttf-jetbrains-mono rofi-lbonn-wayland-git nautilus gthumb qt5-styleplugins qt5ct kwayland --noconfirm --needed
 
 echo "Deploying conf"
-cd /.bin
+cd ~/.bin
 git clone https://github.com/MacKenzie779/archconf.git
 cd archconf
-cp -R .config /home/user/.config
+cp -R .config ~/.config
 
 
 # Install and configure zsh
@@ -69,7 +69,7 @@ echo "-------------------------------------------------"
 echo "-----------------installing zsh------------------"
 echo "-------------------------------------------------"
 paru -S alacritty zsh
-cd /home/user/.config
+cd ~/.config
 mv .zshrc ..
 mv .bashrc ..
 mv .gitconfig ..
@@ -79,11 +79,11 @@ mv .gitconfig ..
 echo "-------------------------------------------------"
 echo "-----------------configure rofi------------------"
 echo "-------------------------------------------------"
-cd /.bin
+cd ~/.bin
 git clone https://github.com/lr-tech/rofi-themes-collection.git
 cd rofi-themes-collection
-mkdir -p /home/user/.local/share/rofi/themes/
-cp themes/squared-nord.rasi /home/user/.local/share/rofi/themes/
+mkdir -p ~/.local/share/rofi/themes/
+cp themes/squared-nord.rasi ~/.local/share/rofi/themes/
 
 
 #installing other stuff
