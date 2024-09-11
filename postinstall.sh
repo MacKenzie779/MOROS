@@ -28,6 +28,7 @@ mkdir ~/.bin
 echo "-------------------------------------------------"
 echo "------------------building paru------------------"
 echo "-------------------------------------------------"
+pacman -Sy base-devel --noconfirm --needed
 cd ~/.bin
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
