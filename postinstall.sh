@@ -55,7 +55,7 @@ sudo mv sddm.conf ..
 echo "-------------------------------------------------"
 echo "-----------------installing sway-----------------"
 echo "-------------------------------------------------"
-paru -S sway nordic-theme i3status nerd-fonts-jetbrains-mono ttf-jetbrains-mono rofi-lbonn-wayland-git nautilus gthumb qt5-styleplugins qt5ct kwayland --noconfirm --needed
+paru -S sway nordic-theme i3status nerd-fonts rofi-lbonn-wayland-git nautilus gthumb qt5-styleplugins qt5ct kwayland --noconfirm --needed
 
 echo "Deploying conf"
 cd ~/.bin
