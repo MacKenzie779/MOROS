@@ -91,3 +91,10 @@ echo "-------------------------------------------------"
 echo "-------------installing other stuff--------------"
 echo "-------------------------------------------------"
 paru -S nemo swaylock-effects-git swayidle brightnessctl pulseaudio pavucontrol --noconfirm --needed
+
+
+#reboot
+echo "-------------------------------------------------"
+echo "-----------------rebooting now-------------------"
+echo "-------------------------------------------------"
+#reboot
