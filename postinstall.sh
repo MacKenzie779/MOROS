@@ -29,7 +29,7 @@ echo "-------------------------------------------------"
 echo "------------------building paru------------------"
 echo "-------------------------------------------------"
 cd ~/.bin
-sudo pacman -S base-devel --noconfirm --needed
+sudo pacman -Sy base-devel --noconfirm --needed
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
