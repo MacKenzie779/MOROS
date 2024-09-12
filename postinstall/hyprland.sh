@@ -13,6 +13,8 @@ paru -S dunst --noconfirm --needed
 paru -S playerctl --noconfirm --needed
 # file explorer
 paru -S nemo --noconfirm --needed
+# gnome desktop manager
+paru -S gdm --noconfirm --needed
 
 echo "Deploying config by GamingGuy003"
 cd ~/.bin
