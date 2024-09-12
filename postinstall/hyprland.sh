@@ -17,6 +17,7 @@ paru -S playerctl --noconfirm --needed
 paru -S nemo --noconfirm --needed
 
 echo "Deploying config by GamingGuy003"
+cd ~/.bin
 git clone https://github.com/GamingGuy003/configs-dotfiles
 cd fedora
 cd hyprland
