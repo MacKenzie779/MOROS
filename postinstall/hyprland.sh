@@ -1,4 +1,4 @@
-paru -S hyprland hyprpaper hyprlock hyprshot --noconfirm --needed
+paru -S hyprland hyprpaper hyprlock hyprshot automake --noconfirm --needed
 # rofi for wayland
 paru -S fuzzel --noconfirm --needed
 # status bar
@@ -19,6 +19,5 @@ paru -S nemo --noconfirm --needed
 echo "Deploying config by GamingGuy003"
 cd ~/.bin
 git clone https://github.com/GamingGuy003/configs-dotfiles
-cd fedora
-cd hyprland
+cd config-dotfiles/fedora/hyprland
 mv dotfiles ~/.config
