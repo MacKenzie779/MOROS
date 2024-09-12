@@ -77,7 +77,7 @@ case "$PART_PROF" in
         # First, calculate the start and end sectors
         free_space_start=33793
         total_size=$(parted -m ${DISK} unit MiB print free | grep -E '^ [[:digit:]]' | tail -n 1 | cut -d ':' -f 2 | sed 's/MiB//')
-        root_partition_end=$(( free_space_start + (total_size - free_space_start) / 3 ))
+        root_partition_end=$(( free_space_start + ((total_size - free_space_start) / 3) ))
         parted -s ${DISK} mkpart primary ext4 ${free_space_start}MiB ${root_partition_end}MiB
         echo "Create a home partition with the remaining space (2/3 of the free space)"
         parted -s ${DISK} mkpart primary ext4 ${root_partition_end}MiB 100%
