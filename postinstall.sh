@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+source "utils/color-definition.sh"
+source "utils/printf.sh"
+source "utils/scanf.sh"
+
 
 #greeting
 echo "                 _   _           _        _ _"
@@ -35,66 +39,29 @@ cd paru-bin
 makepkg -si
 
 
-# Install and configure sddm
-echo "-------------------------------------------------"
-echo "-----------------installing sddm-----------------"
-echo "-------------------------------------------------"
-paru -S sddm qt5-graphicaleffects qt5-quickcontrols2 qt5-svg --noconfirm --needed
-sudo systemctl enable sddm
-cd /usr/share/sddm/themes
-sudo git clone https://github.com/MacKenzie779/sddm-sugar-candy
-cd /etc
-sudo mkdir sddm.conf.d
-cd sddm.conf.d
-sudo git clone https://github.com/MacKenzie779/sddmconf
-cd sddmconf
-sudo mv sddm.conf ..
+println_imp "-------------------------------------------------"
+println_imp "------------------Select Desktop-----------------"
+println_imp "-------------------------------------------------"
 
+println_imp "Select desktop"
+println_imp "1 -> Gnome"
+println_imp "2 -> Sway (Wayland)"
+println_err "3 -> Hyprland !!NOT IMPLEMENTED!!"
+scanf "Your selection: "
 
-# Install and configure sway
-echo "-------------------------------------------------"
-echo "-----------------installing sway-----------------"
-echo "-------------------------------------------------"
-paru -S sway nordic-theme i3status ttf-jetbrains-mono rofi-lbonn-wayland-git nautilus gthumb qt5-styleplugins qt5ct kwayland --noconfirm --needed
+case "$SCANF" in 
+    "1")
+        source "postinstall/sway.sh"
+        ;;
+    "2")
+        source "postinstall/gnome.sh"
+        ;;
+    *)
+        println_err "No valid selection"
+        ;;
+esac
 
-echo "Deploying conf"
-cd ~/.bin
-git clone https://github.com/MacKenzie779/archconf.git
-cd archconf
-cp -R .config ~/.config
-
-
-# Install and configure zsh
-echo "-------------------------------------------------"
-echo "-----------------installing zsh------------------"
-echo "-------------------------------------------------"
-paru -S alacritty zsh
-cd ~/.config
-mv .zshrc ..
-mv .bashrc ..
-mv .gitconfig ..
-
-
-# Configure zsh
-echo "-------------------------------------------------"
-echo "-----------------configure rofi------------------"
-echo "-------------------------------------------------"
-cd ~/.bin
-git clone https://github.com/lr-tech/rofi-themes-collection.git
-cd rofi-themes-collection
-mkdir -p ~/.local/share/rofi/themes/
-cp themes/squared-nord.rasi ~/.local/share/rofi/themes/
-
-
-#installing other stuff
-echo "-------------------------------------------------"
-echo "-------------installing other stuff--------------"
-echo "-------------------------------------------------"
-paru -S nemo swaylock-effects-git swayidle brightnessctl pulseaudio pavucontrol --noconfirm --needed
-
-
-#reboot
-echo "-------------------------------------------------"
-echo "-----------------rebooting now-------------------"
-echo "-------------------------------------------------"
-#reboot
+println_imp "-------------------------------------------------"
+println_imp "------Postinstall finished - REBOOTING NOW-------"
+println_imp "-------------------------------------------------"
+reboot
