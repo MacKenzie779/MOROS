@@ -15,7 +15,7 @@ paru -S playerctl --noconfirm --needed
 paru -S nemo --noconfirm --needed
 # gnome desktop manager
 paru -S gdm --noconfirm --needed
-
+sudo systemctl enable gdm
 echo "Deploying config by GamingGuy003"
 cd ~/.bin
 git clone https://github.com/GamingGuy003/configs-dotfiles
