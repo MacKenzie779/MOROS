@@ -39,7 +39,7 @@ makepkg -si
 echo "-------------------------------------------------"
 echo "-----------------installing sddm-----------------"
 echo "-------------------------------------------------"
-paru -S sddm qt5‑graphicaleffects qt5‑quickcontrols2 qt5‑svg --noconfirm --needed
+paru -S sddm qt5-graphicaleffects qt5-quickcontrols2 qt5-svg --noconfirm --needed
 sudo systemctl enable sddm
 cd /usr/share/sddm/themes
 sudo git clone https://github.com/MacKenzie779/sddm-sugar-candy
@@ -55,7 +55,7 @@ sudo mv sddm.conf ..
 echo "-------------------------------------------------"
 echo "-----------------installing sway-----------------"
 echo "-------------------------------------------------"
-paru -S sway nordic-theme i3status nerd-fonts rofi-lbonn-wayland-git nautilus gthumb qt5-styleplugins qt5ct kwayland --noconfirm --needed
+paru -S sway nordic-theme i3status ttf-jetbrains-mono rofi-lbonn-wayland-git nautilus gthumb qt5-styleplugins qt5ct kwayland --noconfirm --needed
 
 echo "Deploying conf"
 cd ~/.bin
