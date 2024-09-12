@@ -60,7 +60,7 @@ case "$PART_PROF" in
 
         echo -e "\nContinue? y/n"
         read OK
-        if [ $OK = "n" ]; then 
+        if [ "$OK" = "n" ]; then 
             echo "abort installation ..."
             exit 0
         fi
@@ -121,7 +121,7 @@ case "$PART_PROF" in
     
         echo -e "\nContinue? y/n"
         read OK
-        if [ $OK = "n" ]; then 
+        if [ "$OK" = "n" ]; then 
             echo "abort installation ..."
             exit 0
         fi
