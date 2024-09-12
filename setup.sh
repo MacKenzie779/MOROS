@@ -75,7 +75,7 @@ case "$PART_PROF" in
         parted -s ${DISK} mkpart primary linux-swap 1025MiB 33793MiB
         echo "Create a root partition using 1/3 of the remaining free space"
         # First, calculate the start and end sectors
-        free_space_start=33793MiB
+        free_space_start=33793
         total_size=$(parted -m ${DISK} unit MiB print free | grep -E '^ [[:digit:]]' | tail -n 1 | cut -d ':' -f 2 | sed 's/MiB//')
         root_partition_end=$(( free_space_start + (total_size - free_space_start) / 3 ))
         parted -s ${DISK} mkpart primary ext4 ${free_space_start}MiB ${root_partition_end}MiB
