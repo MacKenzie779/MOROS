@@ -7,8 +7,6 @@ paru -S waybar --noconfirm --needed
 paru -S kitty --noconfirm --needed
 # icons
 paru -S kora-icon-theme phinger-cursors --noconfirm --needed
-# polkit
-paru -S lxpolkit --noconfirm --needed
 # notification deamon
 paru -S dunst --noconfirm --needed
 # cmd line utility for controlling media players
@@ -19,5 +17,5 @@ paru -S nemo --noconfirm --needed
 echo "Deploying config by GamingGuy003"
 cd ~/.bin
 git clone https://github.com/GamingGuy003/configs-dotfiles
-cd config-dotfiles/fedora/hyprland
+cd configs-dotfiles/fedora/hyprland
 mv dotfiles ~/.config
