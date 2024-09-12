@@ -22,9 +22,12 @@ Just another ArchLinux Setup Script
 
 ### 2. Desktop Singleboot
 
-Currently not implemented
-
-#coming soon
+| Mount point | Size                   | Filesystem |
+| ----------- | ---------------------- | ---------- |
+| /boot       | 1 GiB (for dualboot)   | FAT32      |
+| SWAP        | 32 GiB (2 x RAM)       | SWAP       |
+| /           | 1/3 of free disk space | EXT4       |
+| /home       | 2/3 of free disk space | EXT4       |
 
 ### 3. VM (for Virtual Machines)
 

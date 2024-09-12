@@ -104,9 +104,62 @@ case "$PART_PROF" in
         ;;
     "2")
         echo "You selected: Desktop partition scheme"
-        echo "Error: not implemented"
-        echo "abort installation ..."
-        exit 1
+        echo "${DISK} will be wiped and following partition table will be applied"
+        echo "+-------------+------------------------+------------+"
+        echo "| Mount point | Size                   | Filesystem |"
+        echo "+-------------+------------------------+------------+"
+        echo "| /boot       | 1 GiB (for dualboot)   | FAT32      |"
+        echo "+-------------+------------------------+------------+"
+        echo "| SWAP        | 32 GiB (2 x RAM)       | SWAP       |"
+        echo "+-------------+------------------------+------------+"
+        echo "| /           | 1/3 of free disk space | EXT4       |"
+        echo "+-------------+------------------------+------------+"
+        echo "| /home       | 2/3 of free disk space | EXT4       |"
+        echo "+-------------+------------------------+------------+"
+
+        echo -e "\nContinue? y/n"
+        read OK
+        if [ "$OK" = "n" ]; then 
+            echo "abort installation ..."
+            exit 0
+        fi
+
+        echo "---------------Creating partitions---------------"
+        echo "Create new GPT partition table"
+        parted -s ${DISK} mklabel gpt
+        echo "Create a 1 GiB EFI System partition for /boot"
+        parted -s ${DISK} mkpart ESP fat32 1MiB 1025MiB
+        parted -s ${DISK} set 1 esp on
+        echo "Create a 32 GiB swap partition"
+        parted -s ${DISK} mkpart primary linux-swap 1025MiB 33793MiB
+        echo "Create a root partition using 1/3 of the remaining free space"
+        # First, calculate the start and end sectors
+        free_space_start=33793
+        total_size=$(parted -m ${DISK} unit MiB print free | grep -E '^[[:digit:]]' | tail -n 1 | cut -d ':' -f 4 | sed 's/MiB//')
+        root_partition_end=$(( free_space_start + ((total_size - free_space_start) / 3) ))
+        parted -s ${DISK} mkpart primary ext4 ${free_space_start}MiB ${root_partition_end}MiB
+        echo "Create a home partition with the remaining space (2/3 of the free space)"
+        parted -s ${DISK} mkpart primary ext4 ${root_partition_end}MiB 100%
+
+        echo "---------------Formatting partitions---------------"
+        echo "Boot-Partition: FAT32 on ${DISK}1"
+        mkfs.fat -F 32 "${DISK}1"
+        echo "SWAP on ${DISK}2"
+        mkswap "${DISK}2"
+        echo "Root-Partition: ext4 on ${DISK}3"
+        mkfs.ext4 "${DISK}3"
+        echo "Home-Partition: ext4 on ${DISK}4"
+        mkfs.ext4 "${DISK}4"
+
+        echo "---------------Mounting partitions---------------"
+        echo "Mounting root partition to /mnt"
+        mount ${DISK}3 /mnt
+        echo "Mounting boot partition to /mnt/boot"
+        mount --mkdir ${DISK}1 /mnt/boot
+        echo "Mounting home partition to /mnt/home"
+        mount --mkdir ${DISK}4 /mnt/home
+        echo "Activating swap"
+        swapon ${DISK}2
         ;;
     "3") 
         echo "You selected: VM partition scheme"
